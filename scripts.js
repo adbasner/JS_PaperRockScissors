@@ -40,7 +40,7 @@ function game() {
   let rounds = 0;
   let playerScore = 0;
   let computerScore = 0;
-
+  alert("Go check the console");
   while (rounds < 5) {
     playerSelection = playerPlay();
     computerSelection = computerPlay();
