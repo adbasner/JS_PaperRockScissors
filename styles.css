@@ -18,16 +18,28 @@ button {
   width: 380px;
 }
 
-button:hover {
+.weapon-item {
+  border-radius: 3px;
+  padding: 10px 12px;
+  width: 110px;
+  margin: 5px;
+  border: 1px solid #9932CC;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 2px 2px #d5d5d5;
+  background-color: #EEE;
+}
+
+button:hover, .weapon-item:hover {
   background-color: #E6E6FA;
 }
 
-button:active {
+button:active, .weapon-item:active {
   box-shadow: 1px 1px #d5d5d5;
   transform: translateY(1px) translateX(1px);
 }
 
-#scoreboard {
+#scoreboard, #game-board {
   display: flex;
   flex-wrap: nowrap;
   max-width: 400px;
@@ -50,32 +62,4 @@ button:active {
   padding: 10px;
 }
 
-#game-board {
-  display: flex;
-  flex-wrap: nowrap;
-  max-width: 400px;
-  margin: 10px auto;
-  justify-content: space-around;
-  align-items: center
-}
 
-.weapon-item {
-  border-radius: 3px;
-  padding: 10px 12px;
-  width: 110px;
-  margin: 5px;
-  border: 1px solid #9932CC;
-  cursor: pointer;
-  outline: none;
-  box-shadow: 2px 2px #d5d5d5;
-  background-color: #EEE;
-}
-
-.weapon-item:hover {
-  background-color: #E6E6FA;
-}
-
-.weapon-item:active {
-  box-shadow: 1px 1px #d5d5d5;
-  transform: translateY(1px) translateX(1px);
-}
