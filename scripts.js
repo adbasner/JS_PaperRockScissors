@@ -1,74 +1,78 @@
+let round = 0;
+let playerScore = 0;
+let computerScore = 0;
+
+let playerChoiceBox = document.querySelector("#player-choice");
+let computerChoiceBox = document.querySelector("#computer-choice");
+let resultChoiceBox = document.querySelector("#result-choice");
+
+let playerScoreBox = document.querySelector("#player-score-value");
+let computerScoreBox = document.querySelector("#computer-score-value");
+let roundBox = document.querySelector("#round-value");
+
+function reset() {
+  alert("Resetting game");
+  playerScore = 0;
+  round = 0;
+  computerScore = 0;
+  playerScoreBox.innerText = playerScore;
+  roundBox.innerText = round;
+  computerScoreBox.innerText = computerScore;
+  playerChoiceBox.innerText = "";
+  computerChoiceBox.innerText = "";
+  resultChoiceBox.innerText = "";
+}
+
 function computerPlay() {
-  const choices = ['rock', 'paper', 'scissors'];
+  const choices = ['Rock', 'Paper', 'Scissors'];
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function getUserInput() {
-  let choice = prompt('Rock, Paper, or Scissors?').toLowerCase();
-  return choice;
-}
-
-function playerPlay() {
-  console.log("Welcome to Rock, Paper, Scissors. Choose your weapon.");
-  let playerChoice = "";
-  let validChoice = false;
-  while (validChoice === false) {
-    if (playerChoice === "paper" || playerChoice === "rock" || playerChoice === "scissors") {
-      validChoice = true;
-    } else {
-      playerChoice = getUserInput();
-    }
-  }
-  return playerChoice;
-}
-
-function playRound(pS, cS) {
-  if (pS === cS) {
-    console.log("Tie");
+function evaluateRound(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
     return "Tie";
-  } else if ((pS === "rock" && cS === "scissors") || (pS === "paper" && cS === "rock") || (pS === "scissors" && cS === "paper")) {
-    console.log("Win");
+  } else if ((playerChoice === "Rock" && computerChoice === "Scissors") || (playerChoice === "Paper" && computerChoice === "Rock") || (playerChoice === "Scissors" && computerChoice === "Paper")) {
     return "Win";
   } else {
-    console.log("Lose");
     return "Lose";
   }
 }
 
+function displayResults(playerChoice, computerChoice, result) {
+  playerChoiceBox.innerText = playerChoice;
+  computerChoiceBox.innerText = computerChoice;
+  resultChoiceBox.innerText = result;
+}
 
-function game() {
-  let rounds = 0;
-  let playerScore = 0;
-  let computerScore = 0;
-  alert("Go check the console");
-  while (rounds < 5) {
-    let playerSelection = playerPlay();
-    let computerSelection = computerPlay();
-
-    console.log("Player chose: " + playerSelection);
-    console.log("Computer chose: " + computerSelection);
-
-    let result = playRound(playerSelection, computerSelection);
-
-    if (result === "Win") {
-      alert("You won this round");
-      playerScore++;
-      rounds++;
-    } else if (result === "Lose") {
-      alert("The computer won this round");
-      computerScore++;
-      rounds++;
-    } else {
-      alert("You tied");
-    }
-  }
-  
-  if (playerScore > computerScore) {
-    alert("You won the best of 5!");
-  } else {
-    alert("The computer won the best of 5!");
+function updateScoreboard(result) {
+  if (result === "Win") {
+    playerScore++;
+    playerScoreBox.innerText = playerScore;
+    round++;
+    roundBox.innerText = round;
+    result = "";
+  } else if (result === "Lose" ) {
+    computerScore++;
+    computerScoreBox.innerText = computerScore;
+    round++;
+    roundBox.innerText = round;
   }
 }
 
-let startButton = document.querySelector("#game-toggle");
-startButton.addEventListener("click", game);
+function checkForWin() {
+  if (playerScore === 4) {
+    alert("You Win!");
+    reset();
+  } else if (computerScore === 4) {
+    alert("You Lose!");
+    reset();
+  }
+}
+
+function playRound(playerChoice) {
+  let computerChoice = computerPlay();
+  let result = evaluateRound(playerChoice, computerChoice);
+  displayResults(playerChoice, computerChoice, result);
+  updateScoreboard(result);
+  setTimeout(checkForWin, 1);
+}

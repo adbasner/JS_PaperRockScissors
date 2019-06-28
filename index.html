@@ -3,15 +3,66 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Paper Rock Scissors</title>
+  <title>Rock Paper Scissors</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
   
 </head>
 <body>
-  <h1>Paper - Rock - Scissors</h1>
-  <button id="game-toggle">Start Game</button>
+  <h1>Rock - Paper - Scissors</h1>
+  <h2>Best out of 7</h2>
+  <div id="scoreboard">
+    <div class="scoreboard-item" id="player-score">
+      <div class="scoreboard-item-inner">Player Score</div>
+      <div class="scoreboard-item-inner" id="player-score-value">0</div>
+    </div>
+    <div class="scoreboard-item" id="round">
+      <div class="scoreboard-item-inner">Round</div>
+      <div class="scoreboard-item-inner" id="round-value">0</div>
+    </div>
+    <div class="scoreboard-item" id="computer-score">
+      <div class="scoreboard-item-inner">Computer Score</div>
+      <div class="scoreboard-item-inner" id="computer-score-value">0</div>
+    </div>
+  </div>
+
+
+  <h2>Choose your weapon </h2>
+
+  <div id="game-board">
+    <div class="weapon-item" id="choose-rock" onclick="playRound('Rock')">
+      <div class="weapon-item-inner">Rock</div>
+    </div>
+    <div class="weapon-item" id="choose-paper" onclick="playRound('Paper')">
+      <div class="weapon-item-inner">Paper</div>
+    </div>
+    <div class="weapon-item" id="choose-scissors" onclick="playRound('Scissors')">
+      <div class="weapon-item-inner">Scissors</div>
+    </div>
+  </div>
+  <div id="game-board">
+    <div class="choice-item">
+      <div class="choice-item-inner">Player Choice</div> 
+      <div class="choice-item-inner" id="player-choice"></div>
+    </div>
+    <div class="choice-item">
+      <div class="choice-item-inner">Computer Choice</div> 
+      <div class="choice-item-inner" id="computer-choice"></div>
+    </div>
+    <div class="choice-item">
+      <div class="choice-item-inner">Result</div> 
+      <div class="choice-item-inner" id="result-choice"></div>
+    </div>
+  </div>
+    
+
+
+
+  
+
+
+
+  <button id="reset-game-button" onclick="reset()">Reset Game</button>
   <script src="scripts.js"></script>
 </body>
 </html>

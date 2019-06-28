@@ -2,6 +2,7 @@ body {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   color: #9932CC;
+  min-width: 375px;
 }
 
 button {
@@ -9,11 +10,12 @@ button {
   padding: 10px 12px;
   border: 1px solid #9932CC;
   color: #9932CC;
-  font: 700 13px Helvetica, Arial;
+  font: 700 16px Helvetica, Arial;
   cursor: pointer;
   outline: none;
-  box-shadow: 3px 3px #d5d5d5;
+  box-shadow: 2px 2px #d5d5d5;
   background-color: #EEE;
+  width: 380px;
 }
 
 button:hover {
@@ -22,5 +24,58 @@ button:hover {
 
 button:active {
   box-shadow: 1px 1px #d5d5d5;
-  transform: translateY(2px) translateX(2px);
+  transform: translateY(1px) translateX(1px);
+}
+
+#scoreboard {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 400px;
+  margin: 10px auto;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.scoreboard-item, .choice-item {
+  width: 110px;
+  height: 100px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #9932CC;
+}
+
+.scoreboard-item-inner, .choice-item-inner {
+  padding: 10px;
+}
+
+#game-board {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 400px;
+  margin: 10px auto;
+  justify-content: space-around;
+  align-items: center
+}
+
+.weapon-item {
+  border-radius: 3px;
+  padding: 10px 12px;
+  width: 110px;
+  margin: 5px;
+  border: 1px solid #9932CC;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 2px 2px #d5d5d5;
+  background-color: #EEE;
+}
+
+.weapon-item:hover {
+  background-color: #E6E6FA;
+}
+
+.weapon-item:active {
+  box-shadow: 1px 1px #d5d5d5;
+  transform: translateY(1px) translateX(1px);
 }
